@@ -1,0 +1,18 @@
+services:
+  backtester:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      # Mount source CSVs read-only — needed only for the convert step.
+      - ./trades.csv:/app/trades.csv:ro
+      - ./lob.csv:/app/lob.csv:ro
+    command: uv run python scripts/run_backtest.py --config configs/backtest_v2.yaml
+
+  convert:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./trades.csv:/app/trades.csv:ro
+      - ./lob.csv:/app/lob.csv:ro
+    command: uv run python scripts/convert_to_parquet.py

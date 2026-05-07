@@ -1,0 +1,41 @@
+# venv
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Build
+build/
+dist/
+
+# Data — large files, not part of repo
+*.csv
+*.parquet
+/data/
+!/data/.gitkeep
+
+# Results — generated artifacts
+/results/
+!/results/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Notebooks output (keep structure, drop heavy outputs)
+notebooks/*.html
