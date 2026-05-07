@@ -44,7 +44,7 @@ re-prices the optimal-spread term and tightens the model around volatile
 regimes. The branching ratio is also a useful diagnostic for adverse-selection
 risk.
 
-* Citation: Bacry, E., Mastromatteo, I., Muzy, J.-F. (2015). *Hawkes Processes in Finance.* Market Microstructure and Liquidity, 1(01).
+* Citation: Bacry, E., Mastromatteo, I., Muzy, J.-F. (2015). *Hawkes Processes in Finance.* Market Microstructure and Liquidity, 1(01), 1550005.
 * Effort: ~2 weeks (calibration + closed-form spread is non-trivial).
 
 ## 4. Queue-position modelling
