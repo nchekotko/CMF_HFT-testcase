@@ -1,0 +1,27 @@
+name: as_asymmetric
+
+data:
+  trades_parquet: data/trades.parquet
+  lob_parquet: data/lob.parquet
+  train_ratio: 0.7
+
+strategy:
+  name: as_asymmetric
+  gamma: 200.0
+  alpha: 0.000005
+  order_size: 100.0
+  max_inventory: 5000.0
+  quote_refresh_min_interval_us: 100000
+
+calibration:
+  sigma_sample_stride: 1
+  intensity_n_bins: 20
+  T_horizon_seconds: 0
+
+execution:
+  partial_fills: true
+  fee_bps: 0.0
+
+output:
+  results_dir: results/v3
+  sample_every_n_events: 100

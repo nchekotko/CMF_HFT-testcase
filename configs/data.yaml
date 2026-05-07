@@ -1,0 +1,17 @@
+# Data layer config: paths and conversion settings.
+# Source CSVs live at the repo root (trades.csv, lob.csv).
+# Run `make convert` once to materialise parquet files into ./data/.
+
+source:
+  trades_csv: trades.csv
+  lob_csv: lob.csv
+
+parquet:
+  trades_parquet: data/trades.parquet
+  lob_parquet: data/lob.parquet
+
+schema:
+  # Microsecond timestamps in `local_timestamp`. 25 LOB levels (0..24).
+  timestamp_unit: microseconds
+  lob_n_levels: 25
+  trade_aggressor_labels: ["buy", "sell"]

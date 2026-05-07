@@ -1,0 +1,29 @@
+base:
+  name: sweep
+  data:
+    trades_parquet: data/trades.parquet
+    lob_parquet: data/lob.parquet
+    train_ratio: 0.7
+  strategy:
+    name: as_microprice
+    gamma: 50.0
+    order_size: 1000.0
+    max_inventory: 100000.0
+    quote_refresh_min_interval_us: 100000
+  calibration:
+    sigma_sample_stride: 1
+    intensity_n_bins: 20
+    T_horizon_seconds: 3600
+  execution:
+    partial_fills: false
+    fee_bps: 0.0
+  output:
+    results_dir: results/sweep
+    sample_every_n_events: 200
+
+grid:
+  strategy.name: ["as_vanilla", "as_microprice"]
+  strategy.gamma: [10.0, 25.0, 50.0, 100.0, 250.0]
+  calibration.T_horizon_seconds: [600, 3600]
+
+n_jobs: -1
