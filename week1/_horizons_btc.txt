@@ -1,0 +1,52 @@
+=== horizon sweep BTC: tau = [1, 5, 10, 30, 120, 300]s ===
+Building TRAIN dataset (Dec'25-Jan'26, stride 3 days)...
+  day  1: 6,767,867 trades -> kept 60,000
+  day  2: 4,163,902 trades -> kept 60,000
+  day  3: 3,338,858 trades -> kept 60,000
+  day  4: 4,231,885 trades -> kept 60,000
+  day  5: 932,723 trades -> kept 60,000
+  day  6: 4,227,432 trades -> kept 60,000
+  day  7: 5,033,784 trades -> kept 60,000
+  day  8: 4,177,410 trades -> kept 60,000
+  day  9: 1,544,627 trades -> kept 60,000
+  day 10: 886,145 trades -> kept 60,000
+  day 11: 2,109,520 trades -> kept 60,000
+  day 12: 1,281,323 trades -> kept 60,000
+  day 13: 3,600,127 trades -> kept 60,000
+  day 14: 3,326,504 trades -> kept 60,000
+  day 15: 3,781,259 trades -> kept 60,000
+  day 16: 3,798,583 trades -> kept 60,000
+  day 17: 1,329,656 trades -> kept 60,000
+  day 18: 5,516,112 trades -> kept 60,000
+  day 19: 704,903 trades -> kept 60,000
+  day 20: 3,132,674 trades -> kept 60,000
+  day 21: 7,256,125 trades -> kept 60,000
+train matrix: 1,260,000 rows x 13 feats
+Exception in thread Thread-2 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8d in position 23: invalid start byte
+  tau=  1s  CV best keep 0.40  CV Score +0.2874
+  tau=  5s  CV best keep 0.40  CV Score +0.2949
+  tau= 10s  CV best keep 0.40  CV Score +0.3508
+  tau= 30s  CV best keep 0.40  CV Score +0.3748
+  tau=120s  CV best keep 1.00  CV Score +0.0000
+  tau=300s  CV best keep 0.80  CV Score +0.1667
+
+Evaluating on Feb (stride 2)...
+
+=== TERM STRUCTURE (BTC, val=Feb'26, 14 days) ===
+   tau   keep   CV_Score  val_Score   PnL_all   PnL_kept    turn/day(USD)
+     1   0.40    +0.2874    +0.2308    -0.126     +0.105    7,602,318,274
+     5   0.40    +0.2949    +0.3052    -0.175     +0.130    7,188,175,885
+    10   0.40    +0.3508    +0.3548    -0.165     +0.190    7,155,267,207
+    30   0.40    +0.3748    +0.2561    -0.139     +0.117    6,879,151,171
+   120   1.00    +0.0000    +0.0000    -0.182     -0.182   15,485,813,291
+   300   0.80    +0.1667    +0.2419    -0.107     +0.135   12,059,971,754

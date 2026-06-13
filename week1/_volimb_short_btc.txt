@@ -1,0 +1,62 @@
+=== VI ablation BTC  taus=[1, 5, 10, 30] ===
+Building TRAIN with VI features (Dec'25-Jan'26, stride 3)...
+  day  1: 6,767,867 trades -> kept 60,000
+  day  2: 4,163,902 trades -> kept 60,000
+  day  3: 3,338,858 trades -> kept 60,000
+  day  4: 4,231,885 trades -> kept 60,000
+  day  5: 932,723 trades -> kept 60,000
+  day  6: 4,227,432 trades -> kept 60,000
+  day  7: 5,033,784 trades -> kept 60,000
+  day  8: 4,177,410 trades -> kept 60,000
+  day  9: 1,544,627 trades -> kept 60,000
+  day 10: 886,145 trades -> kept 60,000
+  day 11: 2,109,520 trades -> kept 60,000
+  day 12: 1,281,323 trades -> kept 60,000
+  day 13: 3,600,127 trades -> kept 60,000
+  day 14: 3,326,504 trades -> kept 60,000
+  day 15: 3,781,259 trades -> kept 60,000
+  day 16: 3,798,583 trades -> kept 60,000
+  day 17: 1,329,656 trades -> kept 60,000
+  day 18: 5,516,112 trades -> kept 60,000
+  day 19: 704,903 trades -> kept 60,000
+  day 20: 3,132,674 trades -> kept 60,000
+  day 21: 7,256,125 trades -> kept 60,000
+train matrix: 1,260,000 rows, base 13 + VI 6 = 19
+Exception in thread Thread-2 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8d in position 23: invalid start byte
+  tau=  1s  base CV +0.2874 (keep 0.40) | full CV +0.3025 (keep 0.40)
+  tau=  5s  base CV +0.2949 (keep 0.40) | full CV +0.3252 (keep 0.40)
+  tau= 10s  base CV +0.3508 (keep 0.40) | full CV +0.3650 (keep 0.40)
+  tau= 30s  base CV +0.3748 (keep 0.40) | full CV +0.4478 (keep 0.40)
+
+Evaluating on Feb (stride 2)...
+  day 1: 6,759,515 -> 6,759,515
+  day 2: 8,903,914 -> 4,451,957
+  day 3: 19,580,992 -> 4,895,248
+  day 4: 8,784,245 -> 4,392,123
+  day 5: 7,998,760 -> 7,998,760
+  day 6: 8,361,305 -> 4,180,653
+  day 7: 5,506,415 -> 5,506,415
+  day 8: 4,131,070 -> 4,131,070
+  day 9: 4,735,651 -> 4,735,651
+  day 10: 4,243,601 -> 4,243,601
+  day 11: 1,846,628 -> 1,846,628
+  day 12: 6,626,614 -> 6,626,614
+  day 13: 6,996,826 -> 6,996,826
+  day 14: 5,402,230 -> 5,402,230
+
+=== VI ABLATION (BTC, val=Feb'26, 14 days) ===
+   tau   base_val   full_val     delta
+     1    +0.2308    +0.2407   +0.0099
+     5    +0.3052    +0.3200   +0.0148
+    10    +0.3548    +0.3762   +0.0214
+    30    +0.2561    +0.3398   +0.0837

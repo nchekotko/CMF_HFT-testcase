@@ -1,0 +1,110 @@
+[BTC] Building TRAIN dataset (Dec'25-Jan'26, stride 3 days)...
+  day  1: 6,767,867 trades -> kept 60,000
+  day  2: 4,163,902 trades -> kept 60,000
+  day  3: 3,338,858 trades -> kept 60,000
+  day  4: 4,231,885 trades -> kept 60,000
+  day  5: 932,723 trades -> kept 60,000
+  day  6: 4,227,432 trades -> kept 60,000
+  day  7: 5,033,784 trades -> kept 60,000
+  day  8: 4,177,410 trades -> kept 60,000
+  day  9: 1,544,627 trades -> kept 60,000
+  day 10: 886,145 trades -> kept 60,000
+  day 11: 2,109,520 trades -> kept 60,000
+  day 12: 1,281,323 trades -> kept 60,000
+  day 13: 3,600,127 trades -> kept 60,000
+  day 14: 3,326,504 trades -> kept 60,000
+  day 15: 3,781,259 trades -> kept 60,000
+  day 16: 3,798,583 trades -> kept 60,000
+  day 17: 1,329,656 trades -> kept 60,000
+  day 18: 5,516,112 trades -> kept 60,000
+  day 19: 704,903 trades -> kept 60,000
+  day 20: 3,132,674 trades -> kept 60,000
+  day 21: 7,256,125 trades -> kept 60,000
+train matrix: 1,260,000 rows x 19 feats (base 13 + VI 6) from 21 days
+
+--- tau=30s  (base+VI, 19 feats) ---
+Exception in thread Thread-2 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Nikolay\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8d in position 23: invalid start byte
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.4478  <-- best
+    keep 0.45:  +0.4003
+    keep 0.50:  +0.3523
+    keep 0.55:  +0.3131
+    keep 0.60:  +0.2788
+    keep 0.65:  +0.2466
+    keep 0.70:  +0.2069
+    keep 0.75:  +0.1783
+    keep 0.80:  +0.1501
+    keep 0.85:  +0.1159
+    keep 0.90:  +0.0971
+    keep 0.95:  +0.0606
+    keep 1.00:  +0.0000
+
+--- tau=120s  (base, 13 feats) ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  -0.1140
+    keep 0.45:  -0.1084
+    keep 0.50:  -0.1033
+    keep 0.55:  -0.1031
+    keep 0.60:  -0.1276
+    keep 0.65:  -0.1477
+    keep 0.70:  -0.1694
+    keep 0.75:  -0.1636
+    keep 0.80:  -0.1327
+    keep 0.85:  -0.1337
+    keep 0.90:  -0.1052
+    keep 0.95:  -0.0672
+    keep 1.00:  +0.0000  <-- best
+
+--- tau=300s  (base, 13 feats) ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.1457
+    keep 0.45:  +0.1084
+    keep 0.50:  +0.0836
+    keep 0.55:  +0.0805
+    keep 0.60:  +0.0724
+    keep 0.65:  +0.0608
+    keep 0.70:  +0.0796
+    keep 0.75:  +0.1185
+    keep 0.80:  +0.1667  <-- best
+    keep 0.85:  +0.1080
+    keep 0.90:  +0.0777
+    keep 0.95:  +0.0285
+    keep 1.00:  +0.0000
+
+saved artifacts -> C:\Users\Nikolay\Documents\CMF\week1\ml_artifacts_BTC.joblib
+  day  1: 6,759,515 trades -> sampled 6,759,515 (x1.0)
+  day  2: 8,903,914 trades -> sampled 4,451,957 (x2.0)
+  day  3: 19,580,992 trades -> sampled 4,895,248 (x4.0)
+  day  4: 8,784,245 trades -> sampled 4,392,123 (x2.0)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 347, in train
+    evaluate(sym)
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 489, in evaluate
+    preds = ctx.predict_chunked(art["models"], volimb_map=vmap)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 218, in predict_chunked
+    preds[tau][s:e] = mdl.predict(use)
+                      ^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\sklearn\ensemble\_hist_gradient_boosting\gradient_boosting.py", line 1824, in predict
+    return self._loss.link.inverse(self._raw_predict(X).ravel())
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\sklearn\ensemble\_hist_gradient_boosting\gradient_boosting.py", line 1328, in _raw_predict
+    self._predict_iterations(
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\sklearn\ensemble\_hist_gradient_boosting\gradient_boosting.py", line 1356, in _predict_iterations
+    raw_predictions[:, k] += predict(X)
+                             ^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\sklearn\ensemble\_hist_gradient_boosting\predictor.py", line 72, in predict
+    out = np.empty(X.shape[0], dtype=Y_DTYPE)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 22.9 MiB for an array with shape (3000000,) and data type float64

@@ -1,0 +1,20 @@
+  day  1: 15,342,731 trades -> sampled 5,114,244 (x3.0)
+  day  2: 18,297,860 trades -> sampled 4,574,465 (x4.0)
+  day  3: 30,864,956 trades -> sampled 4,409,280 (x7.0)
+  day  4: 14,846,160 trades -> sampled 4,948,720 (x3.0)
+  day  5: 11,520,000 trades -> sampled 5,760,000 (x2.0)
+  day  6: 12,639,918 trades -> sampled 4,213,306 (x3.0)
+  day  7: 8,579,828 trades -> sampled 4,289,914 (x2.0)
+  day  8: 8,339,584 trades -> sampled 4,169,792 (x2.0)
+  day  9: 7,923,955 trades -> sampled 7,923,955 (x1.0)
+  day 10: 7,059,258 trades -> sampled 7,059,258 (x1.0)
+  day 11: 2,752,416 trades -> sampled 2,752,416 (x1.0)
+  day 12: 9,337,217 trades -> sampled 4,668,609 (x2.0)
+  day 13: 11,251,053 trades -> sampled 5,625,527 (x2.0)
+  day 14: 8,776,781 trades -> sampled 4,388,391 (x2.0)
+
+=== VALIDATION (Feb'26, ETH, 14 days) ===
+   tau   keep     Score   PnL_all   PnL_kept   kept%    turn/day(USD)   >=500k?
+    30   0.40    +0.903    +0.190     +1.093   40.0%    6,110,455,021        OK
+   120   1.00    +0.000    +0.050     +0.050  100.0%   13,501,606,336        OK
+   300   0.40    +0.997    +0.111     +1.107   40.0%    5,795,869,345        OK

@@ -1,0 +1,92 @@
+
+thread '<unnamed>' (12484) panicked at C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\pyo3-0.28.2\src\instance.rs:349:60:
+PyObject pointer is null
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+MemoryErrorException ignored in sys.unraisablehook[ETH] Building TRAIN dataset (Dec'25-Jan'26, stride 3 days)...
+  day  1: 10,475,188 trades -> kept 60,000
+  day  2: 7,753,902 trades -> kept 60,000
+  day  3: 6,493,338 trades -> kept 60,000
+  day  4: 9,398,690 trades -> kept 60,000
+  day  5: 2,455,782 trades -> kept 60,000
+  day  6: 8,979,194 trades -> kept 60,000
+  day  7: 9,817,492 trades -> kept 60,000
+  day  8: 7,619,042 trades -> kept 60,000
+  day  9: 2,958,944 trades -> kept 60,000
+  day 10: 1,882,393 trades -> kept 60,000
+  day 11: 3,582,875 trades -> kept 60,000
+  day 12: 2,161,378 trades -> kept 60,000
+  day 13: 6,393,549 trades -> kept 60,000
+  day 14: 5,800,879 trades -> kept 60,000
+  day 15: 5,697,939 trades -> kept 60,000
+  day 16: 6,747,184 trades -> kept 60,000
+  day 17: 2,658,487 trades -> kept 60,000
+  day 18: 9,669,745 trades -> kept 60,000
+  day 19: 1,450,204 trades -> kept 60,000
+  day 20: 6,647,131 trades -> kept 60,000
+  day 21: 13,376,998 trades -> kept 60,000
+train matrix: 1,260,000 rows x 13 feats from 21 days
+
+--- tau=30s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.2715  <-- best
+    keep 0.45:  +0.2379
+    keep 0.50:  +0.2237
+    keep 0.55:  +0.1828
+    keep 0.60:  +0.1650
+    keep 0.65:  +0.1415
+    keep 0.70:  +0.1285
+    keep 0.75:  +0.1131
+    keep 0.80:  +0.1011
+    keep 0.85:  +0.0854
+    keep 0.90:  +0.0579
+    keep 0.95:  +0.0135
+    keep 1.00:  +0.0000
+
+--- tau=120s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  -0.0701
+    keep 0.45:  -0.0634
+    keep 0.50:  -0.0284
+    keep 0.55:  -0.0277
+    keep 0.60:  -0.0226
+    keep 0.65:  -0.0282
+    keep 0.70:  -0.0187
+    keep 0.75:  -0.0131
+    keep 0.80:  -0.0254
+    keep 0.85:  -0.0605
+    keep 0.90:  -0.0186
+    keep 0.95:  -0.0498
+    keep 1.00:  +0.0000  <-- best
+
+--- tau=300s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.0634  <-- best
+    keep 0.45:  +0.0383
+    keep 0.50:  +0.0213
+    keep 0.55:  +0.0440
+    keep 0.60:  +0.0370
+    keep 0.65:  +0.0051
+    keep 0.70:  -0.0176
+    keep 0.75:  -0.0642
+    keep 0.80:  -0.1184
+    keep 0.85:  -0.1266
+    keep 0.90:  -0.0484
+    keep 0.95:  -0.0186
+    keep 1.00:  +0.0000
+
+saved artifacts -> C:\Users\Nikolay\Documents\CMF\week1\ml_artifacts_ETH.joblib
+Traceback (most recent call last):
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 360, in <module>
+    train(sym)
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 289, in train
+    evaluate(sym)
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 326, in evaluate
+    ctx = FeatureContext(trades, bbo, liq_bn, liq_by)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 105, in __init__
+    self.side_all = np.where(trades["side"].to_numpy() == "buy", 1.0, -1.0)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\polars\series\series.py", line 5003, in to_numpy
+    return self._s.to_numpy(writable=writable, allow_copy=allow_copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyo3_runtime.PanicException: PyObject pointer is null

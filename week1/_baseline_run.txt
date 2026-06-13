@@ -1,0 +1,14 @@
+Baseline ensemble: Bybit-reversal(5s) | Binance-reversal(60s) | cluster>=50
+Turnover constraint: kept clipped turnover >= $500,000 / day
+
+=== TRAIN  (BTC, 16 days sampled) ===
+   tau     Score   PnL_all   PnL_kept   PnL_filt   kept%    turn/day(USD)   >=500k?
+    30    -0.007    -0.097     -0.104     -0.088   59.4%    6,649,903,857        OK
+   120    -0.172    -0.085     -0.257     +0.126   59.4%    6,649,903,857        OK
+   300    -0.487    -0.160     -0.647     +0.438   59.4%    6,649,903,857        OK
+
+=== VAL  (BTC, 14 days sampled) ===
+   tau     Score   PnL_all   PnL_kept   PnL_filt   kept%    turn/day(USD)   >=500k?
+    30    +0.116    -0.179     -0.063     -0.286   53.1%    7,461,666,831        OK
+   120    -0.001    -0.166     -0.167     -0.165   53.1%    7,461,666,831        OK
+   300    +0.330    -0.117     +0.212     -0.424   53.1%    7,461,666,831        OK

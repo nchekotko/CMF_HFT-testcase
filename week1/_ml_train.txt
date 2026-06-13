@@ -1,0 +1,85 @@
+Building TRAIN dataset (Dec'25-Jan'26, stride 3 days)...
+  day  1: 6,767,867 trades -> kept 60,000
+  day  2: 4,163,902 trades -> kept 60,000
+  day  3: 3,338,858 trades -> kept 60,000
+  day  4: 4,231,885 trades -> kept 60,000
+  day  5: 932,723 trades -> kept 60,000
+  day  6: 4,227,432 trades -> kept 60,000
+  day  7: 5,033,784 trades -> kept 60,000
+  day  8: 4,177,410 trades -> kept 60,000
+  day  9: 1,544,627 trades -> kept 60,000
+  day 10: 886,145 trades -> kept 60,000
+  day 11: 2,109,520 trades -> kept 60,000
+  day 12: 1,281,323 trades -> kept 60,000
+  day 13: 3,600,127 trades -> kept 60,000
+  day 14: 3,326,504 trades -> kept 60,000
+  day 15: 3,781,259 trades -> kept 60,000
+  day 16: 3,798,583 trades -> kept 60,000
+  day 17: 1,329,656 trades -> kept 60,000
+  day 18: 5,516,112 trades -> kept 60,000
+  day 19: 704,903 trades -> kept 60,000
+  day 20: 3,132,674 trades -> kept 60,000
+  day 21: 7,256,125 trades -> kept 60,000
+train matrix: 1,260,000 rows x 13 feats from 21 days
+
+--- tau=30s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.3748  <-- best
+    keep 0.45:  +0.3466
+    keep 0.50:  +0.3227
+    keep 0.55:  +0.2891
+    keep 0.60:  +0.2698
+    keep 0.65:  +0.2398
+    keep 0.70:  +0.2026
+    keep 0.75:  +0.1729
+    keep 0.80:  +0.1426
+    keep 0.85:  +0.1169
+    keep 0.90:  +0.0907
+    keep 0.95:  +0.0623
+
+--- tau=120s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  -0.1140
+    keep 0.45:  -0.1084
+    keep 0.50:  -0.1033
+    keep 0.55:  -0.1031
+    keep 0.60:  -0.1276
+    keep 0.65:  -0.1477
+    keep 0.70:  -0.1694
+    keep 0.75:  -0.1636
+    keep 0.80:  -0.1327
+    keep 0.85:  -0.1337
+    keep 0.90:  -0.1052
+    keep 0.95:  -0.0672  <-- best
+
+--- tau=300s ---
+  CV mean Score by kept-fraction:
+    keep 0.40:  +0.1457
+    keep 0.45:  +0.1084
+    keep 0.50:  +0.0836
+    keep 0.55:  +0.0805
+    keep 0.60:  +0.0724
+    keep 0.65:  +0.0608
+    keep 0.70:  +0.0796
+    keep 0.75:  +0.1185
+    keep 0.80:  +0.1667  <-- best
+    keep 0.85:  +0.1080
+    keep 0.90:  +0.0777
+    keep 0.95:  +0.0285
+
+saved artifacts -> C:\Users\Nikolay\Documents\CMF\week1\ml_artifacts.joblib
+Traceback (most recent call last):
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 322, in <module>
+    train()
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 251, in train
+    evaluate()
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 289, in evaluate
+    feat = compute_features(trades, bbo, liq_bn, liq_by)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\ml_baseline.py", line 126, in compute_features
+    X = np.column_stack([cols[name] for name in FEATURES]).astype(np.float32)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nikolay\Documents\CMF\week1\.venv\Lib\site-packages\numpy\lib\_shape_base_impl.py", line 666, in column_stack
+    return _nx.concatenate(arrays, 1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.90 GiB for an array with shape (19580992, 13) and data type float64
